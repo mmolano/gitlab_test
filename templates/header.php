@@ -1,4 +1,17 @@
-<?php include "config/config.php"; ?>
+<?php 
+  function __autoload($class)
+  {
+    require_once "config/$class.php";
+  }
+
+  session_start();
+
+  if(isset($_GET['logout'])){
+    $destroy_sessions = new User();
+    $destroy_sessions->log_out();
+  }
+
+?>
 <!doctype html>
 <html lang="fr">
 <head>
