@@ -1,16 +1,22 @@
-<?php include 'templates/header.php' ?>
+<?php include 'templates/header.php';
 
-<?php echo $_SESSION['user_session'] ?>
+echo $_SESSION['user_id'];
+echo $_SESSION['pass']; 
+ 
+ ?>
 
 <header>
   <img src="" alt="">
   <div>
-    <a href="">home</a>
-    <a href="">movies</a>
-    <a href="">animes</a>
-    <a href="">login</a>
-    <a href="">Create account</a>
-    <a href="">logout</a>
+    <?php if (!isset($_SESSION['user_session'])) : ?>
+      <a href="">home</a>
+      <a href="">movies</a>
+      <a href="">animes</a>
+      <a href="">login</a>
+      <a href="">Create account</a>
+    <?php else: ?>
+      <a href="?logout">logout</a>
+    <?php endif; ?>
   </div>
 </header>
 
