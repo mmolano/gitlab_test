@@ -1,4 +1,4 @@
-This is the beginning of this project (19/07/2019) - might take some time to finish it. Readme file will be updated once finished
+This is the beginning of this project (19/07/2019) - might take some time to finish it. Readme file will be updated when finished
 
 A PHP 🎥 project with multi-features :
 
