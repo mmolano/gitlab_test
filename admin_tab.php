@@ -4,8 +4,14 @@
    header('Location: index.php');
  }
 
- $get_users = new User;
-
+ if(isset($_POST['delete']) && !empty($_POST)){
+   $delete = new User;
+   $delete->DeleteUser();
+  }
+  
+  $getAllUsers = new User;
+  $user_list = $getAllUsers->getUsers();
+  
 ?>
 
 
@@ -13,12 +19,26 @@
   <thead>
     <tr>
       <th>ID</th>
+      <th>Email</th>
       <th>Pseudo</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-      <?= $get_users->getUsers(); ?>
+  <?php
+  while($row = $user_list->fetch()) :?> 
+      <tr>
+        <td><?= $row['id'] ?></td>
+        <td><?= $row['email'] ?></td>
+        <td><?= $row['pseudo'] ?></td>
+        <td> 
+          <form method="POST" action="">
+            <input type="hidden" name="usr_id" value="<?= $row['id'] ?>">
+            <button type="submit" name="delete" value="remove"></button>
+          </form> 
+        </td>
+      </tr>
+  <?php endwhile ?>
   </tbody>
 </table>
 

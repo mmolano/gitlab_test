@@ -1,7 +1,7 @@
 <?php include 'templates/header.php';
 
 if(!isset($_SESSION['user_session'])){
-  if(isset($_POST['login']) & !empty($_POST['pseudo']) & !empty($_POST['pass'])){
+  if(isset($_POST['login']) && !empty($_POST['pseudo']) && !empty($_POST['pass'])){
     $pseudo = $_POST['pseudo'];
     $pass = $_POST['pass'];
     
