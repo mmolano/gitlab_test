@@ -1,3 +1,4 @@
 .htaccess
 .sass-cache
 source/videos
+includes/reset_request.inc.php

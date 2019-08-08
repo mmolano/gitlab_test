@@ -72,13 +72,13 @@ if (isset($_POST['reset_request_submit']) && !empty($_POST['email'])){
           $mail->isSMTP();                                            // Set mailer to use SMTP
           $mail->Host       = 'SSL0.OVH.NET';  // Specify main and backup SMTP servers
           $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-          $mail->Username   = '';                     // SMTP username
-          $mail->Password   = '';                               // SMTP password
+          $mail->Username   = 'space_one@dev-molano.com';                     // SMTP username
+          $mail->Password   = 'stickeurs901';                               // SMTP password
           $mail->SMTPSecure = 'ssl';                                  // Enable TLS encryption, `ssl` also accepted
           $mail->Port       = 465;                                    // TCP port to connect to
 
           //Recipients
-          $mail->setFrom('', 'Space_one');
+          $mail->setFrom('space_one@dev-molano.com', 'Space_one');
           $mail->addAddress($userEmail, 'User'); 
 
           // Attachments

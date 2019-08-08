@@ -20,7 +20,13 @@
   <meta name="description" content="My Movie List">
   <meta name="Publisher" content="Miguel Molano">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon"  href="../source/images/ico/space.png">
+  <link rel="icon"
+  <?php if ($folder_in == true)  : ?>
+  href="../source/images/ico/space.png"
+  <?php else: ?>
+  href="source/images/ico/space.png"
+  <?php endif ?>
+  >
   <link rel="stylesheet" type="text/css"
   <?php if ($folder_in == true)  : ?>
   href="../source/css/style.css"
