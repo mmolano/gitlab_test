@@ -2,7 +2,7 @@
 
 $hideLog_in = true;
 
-include 'templates/header.php';
+require 'templates/header.php';
   
 ?>
 
@@ -47,4 +47,4 @@ include 'templates/header.php';
 </div>
 
 
-<?php include 'templates/footer.php' ?>
+<?php require 'templates/footer.php' ?>

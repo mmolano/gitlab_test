@@ -14,7 +14,7 @@ class User extends Database
       }
       $execute = $stmt->execute();
       if($execute){
-        header('Location: login');
+        header('Location: login?create=success');
         return true;
         exit();
       }else{

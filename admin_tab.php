@@ -1,4 +1,4 @@
-<?php include 'templates/header.php';
+<?php require 'templates/header.php';
  
  if ($_SESSION['user_admin'] == 0){
    header('Location: index');
@@ -44,4 +44,4 @@
 
 
 
-<?php include 'templates/footer.php' ?>
+<?php require 'templates/footer.php' ?>

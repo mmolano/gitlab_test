@@ -2,8 +2,8 @@
 
 $hideLog_in = true;
 
-include 'templates/header.php';
-include 'includes/new_user.inc.php';
+require 'templates/header.php';
+require 'includes/new_user.inc.php';
 
 ?>
 
@@ -21,7 +21,15 @@ include 'includes/new_user.inc.php';
 <?php endif; ?>
   <div class="item_form">
     <h1>Create</h1>
-    <div class="form_alerts"><?= $error; ?></div>
+    <?php if($errors): ?>
+      <div class="form_alerts">
+        <ul>
+          <?php foreach ($errors as $error): ?>
+            <li><?= $error ?></li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+    <?php endif; ?>
       <form method="post">
         <input type="text" name="pseudo" placeholder="Pseudo">
         <input type="text" name="email" placeholder="Email">
@@ -33,4 +41,4 @@ include 'includes/new_user.inc.php';
 </div>
 
 
-<?php include 'templates/footer.php' ?>
+<?php require 'templates/footer.php' ?>

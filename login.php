@@ -2,8 +2,8 @@
 
 $hideLog_in = true;
 
-include 'templates/header.php';
-include 'includes/login_user.inc.php';
+require 'templates/header.php';
+require 'includes/login_user.inc.php';
 
 ?>
 
@@ -22,11 +22,24 @@ include 'includes/login_user.inc.php';
 <?php endif; ?>
   <div class="item_form">
     <h1>Login</h1>
-    <div class="form_alerts"><?= $error; ?></div>
+    <?php if($error) : ?>
+      <div class="form_alerts">
+        <ul>
+          <li>
+            <?= $error; ?>
+          </li>
+        </ul>
+      </div>
+    <?php endif; ?>
     <?php 
       if(isset($_GET['reset'])){
         if($_GET['reset'] == 'success'){
           echo '<div class="form_success">Sucessfully changed your password!</div>';
+        }
+      }
+      if(isset($_GET['create'])){
+        if($_GET['create'] == 'success'){
+          echo '<div class="form_success">Your account has been created!</div>';
         }
       }
     ?>
@@ -43,4 +56,4 @@ include 'includes/login_user.inc.php';
 
 
 
-<?php include 'templates/footer.php' ?>
+<?php require 'templates/footer.php' ?>

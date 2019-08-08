@@ -96,6 +96,10 @@ body
 .form_alerts
 {
   color: #ff5050;
+  & ul{
+    padding-left: 15px;
+    margin: 0px;
+  }
 }
 
 .form_success{

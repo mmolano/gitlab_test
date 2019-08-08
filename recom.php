@@ -1,4 +1,4 @@
-<?php include 'templates/header.php';
+<?php require 'templates/header.php';
 
 if(isset($_POST))
 
@@ -41,4 +41,4 @@ if(isset($_POST))
 </form>
 
 
-<?php include 'templates/footer.php' ?>
+<?php require 'templates/footer.php' ?>

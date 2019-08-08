@@ -1,6 +1,6 @@
 <?php 
-include 'templates/header.php'; 
-include 'includes/profile_infos.inc.php';
+require 'templates/header.php'; 
+require 'includes/profile_infos.inc.php';
 ?>
 
 
@@ -21,4 +21,4 @@ include 'includes/profile_infos.inc.php';
 
 
 
-<?php include 'templates/footer.php' ?>
+<?php require 'templates/footer.php' ?>
