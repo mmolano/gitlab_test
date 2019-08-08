@@ -1,32 +1,46 @@
-<?php include 'templates/header.php';
+<?php 
 
-if(!isset($_SESSION['user_session'])){
-  if(isset($_POST['login']) && !empty($_POST['pseudo']) && !empty($_POST['pass'])){
-    $pseudo = $_POST['pseudo'];
-    $pass = $_POST['pass'];
-    
-    $new_log = new User();
-    $new_log->log_in($pseudo, $pass);
-  }
-}else{
-  echo 'user is already logged as : '.$_SESSION['user_session'];
-}
+$hideLog_in = true;
+
+include 'templates/header.php';
+include 'includes/login_user.inc.php';
 
 ?>
 
-<form method="post" action="">
+<div class="login_video">
+  <video autoplay="true" loop muted>
+    <source src="source/videos/1.mp4" type="video/mp4">
+  </video>
+</div>
 
-<label for="">Pseudo</label>
-<input type="text" name="pseudo">
 
-<label for="">Password</label>
-<input type="password" name="pass">
+<div class="login_form">
+<?php if(!$_SERVER['HTTP_REFERER']) : ?>
+<a class="return_arrow" href="index"></a>
+<?php else : ?>
+<a class="return_arrow" href="<?= $_SERVER['HTTP_REFERER']; ?>"></a>
+<?php endif; ?>
+  <div class="item_form">
+    <h1>Login</h1>
+    <div class="form_alerts"><?= $error; ?></div>
+    <?php 
+      if(isset($_GET['reset'])){
+        if($_GET['reset'] == 'success'){
+          echo '<div class="form_success">Sucessfully changed your password!</div>';
+        }
+      }
+    ?>
+      <form method="post">
+        <input type="text" name="pseudo" placeholder="Pseudo">
+        <input type="password" name="pass" placeholder="Password">
+        <a href="reset">Forgotten password?</a>
+        <a href="new_user">Create account</a>
+        <input type="submit" name="login" value="submit">
+      </form>
+  </div>
+</div>
 
-<input type="submit" name="login" value="submit">
 
-</form>
-
-<a href="?logout">Logout</a>
 
 
 <?php include 'templates/footer.php' ?>

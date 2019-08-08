@@ -1,7 +1,7 @@
 <?php include 'templates/header.php';
  
  if ($_SESSION['user_admin'] == 0){
-   header('Location: index.php');
+   header('Location: index');
  }
 
  if(isset($_POST['delete']) && !empty($_POST)){
@@ -26,19 +26,19 @@
   </thead>
   <tbody>
   <?php
-  while($row = $user_list->fetch()) :?> 
+  while($row = $user_list->fetch()) : extract($row) ?> 
       <tr>
-        <td><?= $row['id'] ?></td>
-        <td><?= $row['email'] ?></td>
-        <td><?= $row['pseudo'] ?></td>
+        <td><?= $id; ?></td>
+        <td><?= $email; ?></td>
+        <td><?= $pseudo; ?></td>
         <td> 
-          <form method="POST" action="">
-            <input type="hidden" name="usr_id" value="<?= $row['id'] ?>">
+          <form method="post">
+            <input type="hidden" name="usr_id" value="<?= $row['id']; ?>">
             <button type="submit" name="delete" value="remove"></button>
           </form> 
         </td>
       </tr>
-  <?php endwhile ?>
+  <?php endwhile; ?>
   </tbody>
 </table>
 

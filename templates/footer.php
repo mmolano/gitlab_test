@@ -1,3 +1,3 @@
-<script src="js/custom.js" type="text/javascript"></script>
+<script src="source/js/custom.js" type="text/javascript"></script>
 </body>
 </html>

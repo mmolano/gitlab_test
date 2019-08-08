@@ -1,57 +1,36 @@
-<?php include 'templates/header.php';
-  
-  if(isset($_POST['submit']) & !empty($_POST)){
-    $pseudo = $_POST['pseudo'];
-    $email = $_POST['email'];
-    $pass = $_POST['pass'];
-    $password_hash = password_hash($pass, PASSWORD_ARGON2I, [ 
-      'memory_cost' => 2 ** 12,
-      'time_cost' => 10,
-      'threads' => 20
-    ]);
+<?php 
 
-    $fields = [
-      'pseudo' => $pseudo,
-      'email' => $email,
-      'pass' => $password_hash
-    ];
+$hideLog_in = true;
 
-    $db = new Database;
-    $reqEmail = $db->connect()->prepare("SELECT email FROM user WHERE email = ?");
-    $reqEmail->execute([$email]);
-    
-    if($reqEmail->rowCount() == 0){
-      if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-        $new_user = new User;
-        $new_user->create($fields);
-      }else{
-        echo 'incorrect';
-      }
-    }else{
-      echo 'user already exist';
-    }
-  }
-  
-
-  
+include 'templates/header.php';
+include 'includes/new_user.inc.php';
 
 ?>
 
-<form method="post" action="">
+<div class="login_video">
+  <video autoplay="true" loop muted>
+    <source src="source/videos/1.mp4" type="video/mp4">
+  </video>
+</div>
 
-  <label for="">Pseudo</label>
-  <input type="text" name="pseudo">
-
-  <label for="">Email</label>
-  <input type="text" name="email">
-
-  <label for="">Password</label>
-  <input type="password" name="pass">
-
-  <input type="submit" name="submit" value="submit">
-
-</form>
-
+<div class="login_form">
+  <?php if(!$_SERVER['HTTP_REFERER']) : ?>
+  <a class="return_arrow" href="index"></a>
+  <?php else : ?>
+  <a class="return_arrow" href="<?= $_SERVER['HTTP_REFERER']; ?>"></a>
+<?php endif; ?>
+  <div class="item_form">
+    <h1>Create</h1>
+    <div class="form_alerts"><?= $error; ?></div>
+      <form method="post">
+        <input type="text" name="pseudo" placeholder="Pseudo">
+        <input type="text" name="email" placeholder="Email">
+        <input type="password" name="pass" placeholder="Password">
+        <a href="login">Already have an account? - Login</a>
+        <input type="submit" name="submit" value="submit">
+      </form>
+  </div>
+</div>
 
 
 <?php include 'templates/footer.php' ?>

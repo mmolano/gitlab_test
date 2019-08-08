@@ -20,23 +20,32 @@
   <meta name="description" content="My Movie List">
   <meta name="Publisher" content="Miguel Molano">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon"  href="images/ico/space.png">
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <title>My Remember Space</title>
+  <link rel="icon"  href="../source/images/ico/space.png">
+  <link rel="stylesheet" type="text/css"
+  <?php if ($folder_in == true)  : ?>
+  href="../source/css/style.css"
+  <?php else: ?>
+  href="source/css/style.css"
+  <?php endif ?>
+  />
+  <title>Space One</title>
 </head>
-<body>
-  
+<body <?php if ($hideLog_in == true)  : ?> class="logs" <?php endif ?>>
+ 
+
+<?php if ($hideLog_in != true)  : ?>
 <header>
   <img src="" alt="">
   <div>
-      <a href="index.php">home</a>
+      <a href="index">home</a>
       <a href="#">movies</a>
       <a href="#">animes</a>
     <?php if (!isset($_SESSION['user_session'])) : ?>
-      <a href="login.php">login</a>
-      <a href="new_user.php">Create account</a>
+      <a href="login">login</a>
+      <a href="new_user">Create account</a>
     <?php else: ?>
       <a href="?logout">logout</a>
     <?php endif; ?>
   </div>
 </header>
+<?php endif; ?>

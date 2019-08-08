@@ -14,11 +14,13 @@ class User extends Database
       }
       $execute = $stmt->execute();
       if($execute){
-        header('Location: Login.php');
+        header('Location: login');
         return true;
+        exit();
       }else{
         $this->showError($stmt);
         return false;
+        exit();
       }
     }catch(PDOException $e){
       echo 'il y a une erreur : ' .$e->getMessage();
@@ -75,13 +77,17 @@ class User extends Database
             $_SESSION['user_friends'] = $returned_row['is_friend'];
             $_SESSION['user_number_friends'] = $returned_row['number_of_friends'];
             $_SESSION['user_created_at'] = $returned_row['created_at'];
-          header('Location: login.php');
+          header('Location: login');
           exit();
         } else {
-          echo 'Wrong password or pseudo';
+          $error = 'Wrong password or pseudo';
+          return $error;
+          exit();
         }
       }else{
-        echo 'Wrong password or pseudo';
+        $error = 'Wrong password or pseudo';
+        return $error;
+        exit();
       }
 
     }catch(PDOException $e){
@@ -92,7 +98,7 @@ class User extends Database
   public function log_out() {
     session_destroy();
     unset($_SESSION['user_session']);
-    header('Location: index.php');
+    header('Location: index');
   }
 
 
