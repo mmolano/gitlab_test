@@ -80,13 +80,11 @@ class User extends Database
           header('Location: login');
           exit();
         } else {
-          $error = 'Wrong password or pseudo';
-          return $error;
+          header('Location: login?exist=failed');
           exit();
         }
       }else{
-        $error = 'Wrong password or pseudo';
-        return $error;
+        header('Location: login?exist=failed');
         exit();
       }
 

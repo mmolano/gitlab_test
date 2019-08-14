@@ -43,14 +43,15 @@
 <header>
   <img src="" alt="">
   <div>
-      <a href="index">home</a>
-      <a href="#">movies</a>
-      <a href="#">animes</a>
+      <a href="index">Home</a>
+      <a href="#">Movies</a>
+      <a href="#">Animes</a>
+      <a href="profile">My Account</a>
     <?php if (!isset($_SESSION['user_session'])) : ?>
-      <a href="login">login</a>
+      <a href="login">Login</a>
       <a href="new_user">Create account</a>
     <?php else: ?>
-      <a href="?logout">logout</a>
+      <a href="?logout">Logout</a>
     <?php endif; ?>
   </div>
 </header>

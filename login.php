@@ -42,6 +42,11 @@ require 'includes/login_user.inc.php';
           echo '<div class="form_success">Your account has been created!</div>';
         }
       }
+      if(isset($_GET['exist'])){
+        if($_GET['exist'] == 'failed'){
+          echo '<div class="form_alerts">Wrong username or password!</div>';
+        }
+      }
     ?>
       <form method="post">
         <input type="text" name="pseudo" placeholder="Pseudo">
