@@ -1,0 +1,21 @@
+image: php:7.0
+cache:
+  paths:
+  - source/.sass-cache
+before_script:
+  - apt-get update -yqq
+  - apt-get install git -yqq
+  - docker-php-ext-install pdo_mysql
+  - wget https://phar.phpunit.de/phpunit.phar
+  - chmod +x phpunit.phar
+  - mv phpunit.phar /usr/local/bin/phpunit
+  - php composer.phar install
+services:
+  - mysql
+variables:
+  MYSQL_DATABASE: hello_world_test
+  MYSQL_ROOT_PASSWORD: mysql
+test:php7:mysql:
+  image: php:7
+  script:
+  - vendor/bin/phpunit --configuration phpunit_mysql.xml --coverage-text
