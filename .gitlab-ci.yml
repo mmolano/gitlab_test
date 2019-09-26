@@ -1,7 +1,4 @@
 image: php:7.0
-cache:
-  paths:
-  - source/.sass-cache
 before_script:
   - apt-get update -yqq
   - apt-get install git -yqq
